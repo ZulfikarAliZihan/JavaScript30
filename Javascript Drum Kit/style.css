@@ -1,0 +1,33 @@
+.container{
+
+    margin: auto;
+    margin-top: 30px;
+    width: 60vw;
+    height: 50vh;
+    background-color: whitesmoke;
+    border:2px dotted forestgreen;
+    border-radius: 10px;
+}
+
+.keys{
+    margin: auto;
+    display: flex;
+    align-items:center;
+    height: 50vh;
+}
+.key{
+    margin: 10px 20px;
+    padding: 10px 20px;
+    font-size: larger;
+    background-color: azure;
+    border-radius: 50%;
+    border:1px solid blue;
+    transition: all .07s;
+    box-shadow: 0px 0px 10px blue;
+}
+.playing{
+    border-color: red;
+    transform: scale(1.5);
+    box-shadow: 0px 0px 10px red;
+    
+}

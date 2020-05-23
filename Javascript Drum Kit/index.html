@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        
+        <div class="keys">
+            <div class="key"data-key="65">
+                <kbd>A</kbd>
+            </div>
+            <div class="key" data-key="83">
+                <kbd>S</kbd>
+            </div>
+            <div class="key" data-key="68">
+                <kbd>D</kbd>
+            </div>
+            <div class="key" data-key="70">
+                <kbd>F</kbd>
+            </div>
+            <div class="key" data-key="71">
+                <kbd>G</kbd>
+            </div>
+            <div class="key" data-key="72">
+                <kbd>H</kbd>
+            </div>
+            <div class="key" data-key="74">
+                <kbd>J</kbd>
+            </div>
+            <div class="key" data-key="75">
+                <kbd>K</kbd>
+            </div>
+            <div class="key" data-key="76">
+                <kbd>L</kbd>
+            </div>
+            <div class="key" data-key="77">
+                <kbd>M</kbd>
+            </div>
+        </div>
+        <h1 style="text-align: center; color: orange;">Digital drum</h1>
+    </div>
+
+
+    <audio data-key="65" src="music/tom.wav"></audio>
+    <audio data-key="83" src="music/boom.wav"></audio>
+    <audio data-key="68" src="music/clap.wav"></audio>
+    <audio data-key="70" src="music/kick.wav"></audio>
+    <audio data-key="71" src="music/hihat.wav"></audio>
+    <audio data-key="72" src="music/openhat.wav"></audio>
+    <audio data-key="74" src="music/ride.wav"></audio>
+    <audio data-key="75" src="music/snare.wav"></audio>
+    <audio data-key="76" src="music/tink.wav"></audio>
+    <audio data-key="77" src="music/Beep-SoundBible (mp3cut.net).mp3"></audio>
+
+    <script>
+        window.addEventListener('keydown',function(e){
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key= document.querySelector(`.key[data-key="${e.keyCode}"]`);
+              if(!audio) return;
+              audio.currentTime=0;
+              audio.play(); 
+              //console.log(key);
+              key.classList.add('playing');
+        });
+        
+        function removeTransition(e){
+            if(e.propertyName!='transform') return;
+            this.classList.remove('playing');
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key=> key.addEventListener('transitionend',removeTransition));
+
+    </script>
+
+</body>
+</html>
